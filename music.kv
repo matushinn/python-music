@@ -1,0 +1,50 @@
+<MusicPlayer>:
+    status: status_text
+    audio_button: audio_button
+
+    orientation: 'vertical'
+    padding: 20
+
+    Label:
+        size_hint: 1, .9
+        id: status_text
+        text: ""
+        center: root.center
+        color: 1, 0, 0, 1
+
+    BoxLayout:
+        size_hint: 1, .1
+        Button:
+            id: audio_button
+            size_hint: .5, 1
+            text: '||'
+            background_color: 0, .5, 1, 1
+            on_release: root.play_or_stop()
+
+        Button:
+            size_hint: .5, 1
+            text: 'Choose File'
+            background_color: 0, .5, 1, 1
+            on_release: root.choose()
+
+
+<PopupChooseFile>:
+    canvas:
+        Color:
+            rgba: 0, 0, .4, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    orientation: "vertical"
+
+    FileChooserIconView:
+        size_hint: 1, .9
+        path: root.current_dir
+        on_submit: root.select(self.selection[0])
+    BoxLayout:
+        size_hint: 1, .1
+        Button:
+            text: "Cancel"
+            background_color: 0,.5,1,1
+            on_release: root.cancel()
