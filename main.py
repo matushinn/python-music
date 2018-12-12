@@ -24,6 +24,7 @@ class MusicPlayer(BoxLayout):
         """Choose File押下時に呼び出され、ポップアップでファイル選択させる"""
 
         content = PopupCho
+        
         seFile(select=self.select, cancel=self.cancel)
         self.popup = Popup(title="Select MP3", content=content)
         self.popup.open()
